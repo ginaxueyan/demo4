@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框</title>
+	<link rel="stylesheet" type="text/css" href="css/public.css" />
+	<style type="text/css">
+   body{font:13px/26px "微软雅黑"; } 
+ .typeList{width: 540px; height: 30px; margin: 50px auto; border: 1px solid #dfdfdf; border-width: 1px 0; overflow: hidden; } 
+ .typeList ul{height: 30px; line-height: 30px; padding-left: 15px; } 
+ .typeList ul li{float: left; margin-right: 12px; position: relative; } 
+ .typeList ul li input{display: none; }
+  .typeList ul li b{display: block; width: 20px; height: 22px; background: url(images/checkbox.gif) no-repeat -12px -18px; position: absolute; left: 0px; top: 6px; }
+   .typeList ul li label{padding-left: 23px; } 
+   .typeList ul li:hover b{background-position: -12px -118px; } 
+   .typeList ul .selected b,.typeList ul .selected:hover b{background-position: -12px -218px; } 
+
+   </style>
+    <script type="text/javascript">
+    function addLoadEvent(func){
+        var oldonload=window.onload;
+        if(typeof window.onload!='function'){
+            window.onload=func;
+        }
+        else{
+            window.onload=function(){
+                oldonload();
+                func();
+            }
+        }
+    }//可以同时加载多个函数
+         function createTag(){
+         var li=document.getElementById("checklist").getElementsByTagName("li");
+        var label;
+        for(var i=0;i<li.length;i++){
+            label=li[i].getElementsByTagName("label");
+            var bTag=document.createElement("b");
+            li[i].insertBefore(bTag,label[0]);
+        }
+    }
+function checklist(){
+    var li=document.getElementById("checklist").getElementsByTagName("li");
+    for(var i=0;i<li.length;i++){
+        li[i].onclick=function(){
+            if(this.className=="selected"){
+                this.className="";
+            }else{
+                this.className="selected";
+            }
+        }
+    }
+}
+
+addLoadEvent(createTag);
+addLoadEvent(checklist);
+
+    </script>
+
+
+
+</head>
+<body>
+<div class="typeList">
+    <ul id="checklist">
+        <li class="selected"><input type="checkbox" name="typeList" id="x" value="" /><label for="x">消费者保障</label></li>
+            <li><input type="checkbox" name="typeList" id="po" value="" /><label for="po">破损补寄</label></li>
+            <li><input type="checkbox" name="typeList" id="s" value="" /><label for="s">7天退换</label> </li>
+            <li><input type="checkbox" name="typeList" id="z" value="" /><label for="z">正品保障</label></li>
+            <li><input type="checkbox" name="typeList" id="d" value="" /><label for="d">电子凭证</label></li>
+            <li><input type="checkbox" name="typeList" id="wang" value="" /><label for="wang">旺旺在线</label></li>
+            <li><input type="checkbox" name="typeList" id="p" value="" /><label for="p">品牌授权</label></li>
+            <li><input type="checkbox" name="typeList" id="h" value="" /><label for="h">货到付款</label></li>
+            <li><input type="checkbox" name="typeList" id="cre" value="" /><label for="cre">信用卡</label></li>
+    </ul>
+</div>
+
+</body>
+</html>
